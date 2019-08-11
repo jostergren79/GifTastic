@@ -3,15 +3,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GifTastic</title>
+    <title>GiffleMania!</title>
     <link rel="stylesheet" href="../GifTastic/assets/css/style.css">
 </head>
 <body>
-    
 
-
+<div class="container">
+    <h1>Wrestler Search</h1>
     
+        <!-- Rendered Buttons will get Dumped Here  -->
+        <div id="buttons-view"></div>
+    
+        <form id="wrestler-form">Enter Your Favorite Wrestler
+          <label for="wrestler-input"></label>
+          <input type="text" id="wrestler-input"><br>
+    
+          <!-- Button triggers new movie to be added -->
+          <input id="add-wrestler" type="submit" value="submit">
+        </form>
+    
+        <!-- Movies will Get Dumped Here -->
+        <div id="wrestlers-view"></div>
+    
+      <script src="../GifTastic/assets/javascript/app.js"></script>
 </body>
 
-<script src="../GifTastic/assets/javascript/game.js"></script>
 </html>
