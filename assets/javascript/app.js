@@ -11,11 +11,10 @@ function renderButtons() {
 
         for (let i = 0; i < wrestlers.length; i++) {
 
-          const a = document.createElement("button");
-          a.classList.add("wrestler");
-          a.setAttribute("data-person", wrestlers[i]);
-          a.innerHTML = wrestlers[i];
-          document.getElementById("wrestler-buttons").append(a);
+            const a = document.createElement("button");
+            a.setAttribute("data-person" , wrestlers[i]);
+            a.innerHTML = wrestlers[i];
+            document.getElementById("wrestler-buttons").append(a);
 
 
         }  
@@ -30,40 +29,49 @@ function renderButtons() {
         
 
         renderButtons();
+       
     });
 
         
-// ---------------------------fetch section ----------------------------- //
+// ---------------------------fetch section(still inoperable) ----------------------------- //
 
-function displayWrestlerInfo() {
-    document.qetElementByClassList("wrestler").forEach(function(button) {
-        button.addEventListener("Click", function () {
-            alert("click")
-        const person = this.getAttribute("data-person");    
-        const queryURL = "https://api.giphy.com/v1/gifs/search?q=" + person + "&api_key=0R2seTXc9SmksHcymZzrTgcyC2E9FL88&q&limit=10&rating=g";
-          
-    fetch(queryURL)
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (responseJson) {
-          
-      const rating = responseJson.Rated;
+     document.querySelectorAll("button").forEach(function (button) {
+        button.addEventListener("click", function (event) {      // Grabbing and storing the data-animal property value from the button
+          const person = event.target.getAttribute("data-person");
+          const queryURL = "https://api.giphy.com/v1/gifs/search?q=" + person + "&api_key=0R2seTXc9SmksHcymZzrTgcyC2E9FL88&q&limit=10&rating=g";
+     console.log(queryURL)
+          fetch(queryURL)
+          .then(function (response) {
+            return response.json(); 
+          })
+            .then(function (responseJson) {
+                const results = responseJson.data;
+                console.log(responseJson)
+                for (let i = 0; i < results.length; i++) {
 
-      const pOne = document.createElement("p")
-      pOne.innerHTML = "Rating: " + rating;
+                if (results[i].rating === "r" || results[i].rating === "pg") {
 
-      wrestlerDiv.append(pOne);
+                const gifDiv = document.createElement("div");
 
-      const gifURL = responseJson.gif;
+                const rating = results[i].rating;
 
-      const image = document.createElement("img")
-      gif.setAttribute("src", gifURL);
+                const p = document.createElement("p");
 
-         wrestlerDiv.append(gif);
+                      p.innerHTML = "Rating: " + rating;
 
-      document.getElementById("wrestlers-view").prepend(wrestlerDiv);
+                const personImage = document.createElement("img");
+
+                personImage.setAttribute("src", results[i].images.fixed_height.url);
+
+                gifDiv.append(p);
+                gifDiv.append(personImage);
+
+                document.getElementById("gifs-appear-here").prepend(gifDiv);
+                }
+            }
+        });
     });
 });
-});
-};
+
+
+// need to set still and animate status on click event.
