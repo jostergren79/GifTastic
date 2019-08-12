@@ -1,5 +1,5 @@
 
-//-------------global variables and render buttons from search function--------//
+//------------- variables,button generation,--------//
 
 
 const wrestlers = ["hulk hogan","andre the giant","mr perfect","the rock","roudy piper","vince mcmahon","jake the snake roberts","the ultimate warrior","the undertaker","shawn michaels" ]
@@ -17,66 +17,107 @@ function renderButtons() {
             a.innerHTML = wrestlers[i];
             
             document.getElementById("wrestler-buttons").append(a);
-
-    }  
+        }
+      
 }
-    renderButtons();
+
+renderButtons();
+
+renderGif();
+
     
-
-
     document.getElementById("add-wrestler").addEventListener("click", function(event) {
+
         event.preventDefault();
 
         let wrestler = document.getElementById("wrestler-input").value.trim();
         
         wrestlers.push(wrestler);
         
-
    
         renderButtons(); 
-        renderGif()
+
+        renderGif();
     });
 
-// ---------------------------fetch section ----------------------------- //
+// ---------------------------fetch giphyapi----------------------------- //
+
 function renderGif() {
 
      document.querySelectorAll("button").forEach(function (button) {
+
         button.addEventListener("click", function (event) {  
-            console.log("clicked a button");    
-          let wrestlerQuery = event.target.getAttribute("data-person");
-        //   let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + wrestlerQuery + "&api_key=0R2seTXc9SmksHcymZzrTgcyC2E9FL88&q&limit=10&rating=g";
-        let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=0R2seTXc9SmksHcymZzrTgcyC2E9FL88&q="+ wrestlerQuery + "&limit=10&offset=0&rating=G&rating=PG&rating=PG-13&lang=en"
-         console.log(queryURL)
-          fetch(queryURL)
-          .then(function (response) {
-            return response.json(); 
-          })
+          
+            let wrestlerQuery = event.target.getAttribute("data-person");
+
+            let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=0R2seTXc9SmksHcymZzrTgcyC2E9FL88&q="+ wrestlerQuery + "&limit=10&offset=0&rating=G&rating=PG&rating=PG-13&lang=en"
+            
+        fetch(queryURL)
+
+            .then(function (response) {
+                return response.json(); 
+            })
             .then(function (responseJson) {
                 const results = responseJson.data;
-                console.log(results) 
 
-                for (let i = 0; i < results.length; i++) {
+            for (let i = 0; i < results.length; i++) {
 
                 const gifDiv = document.createElement("div");
-
-                const rating = results[i].rating;
-
-                const p = document.createElement("p");
-
-                      p.innerHTML = "Rating: " + rating;
 
                 const personImage = document.createElement("img");
 
                 personImage.setAttribute("src", results[i].images.fixed_height.url);
 
+                const rating = results[i].rating;
+
+                const p = document.createElement("p");
+
+                    p.innerHTML = "Rating: " + rating;
+
                 gifDiv.append(p);
                 gifDiv.append(personImage);
 
                 document.getElementById("gifs-appear-here").prepend(gifDiv);
+
                 }
+            });
         });
     });
-});
 }
 
-// need to set still and animate status on click event.
+// ---------------------------gif state section ----------------------------- //
+
+
+document.querySelectorAll(".gif").forEach(function (img) {
+
+    img.addEventListener("click", function (event) {
+
+        console.log("you clicked")
+
+        let state = event.target.getAttribute("data-state");
+    
+        if (state === "still") {
+
+        event.target.setAttribute("src", event.target.getAttribute("data-animate"));
+
+        event.target.setAttribute("data-state", "animate");
+
+        } else {
+
+        event.target.setAttribute("src", event.target.getAttribute("data-still"));
+
+        event.target.setAttribute("data-state", "still");
+
+        }
+    });
+});
+
+
+//-----------------------user add favorites-----------------------//
+
+
+//------------------------integrate omdb api------------------------------//
+
+
+
+
