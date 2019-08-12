@@ -7,9 +7,14 @@ body {
     background-color: gold;
     align-content: center;
     border-style: solid;
+    border-width: 10px;
 }
 
 h1 {
     text-align: center;
     color: black;
+}
+
+#gifs-appear-here {
+    align-content: center;
 }
