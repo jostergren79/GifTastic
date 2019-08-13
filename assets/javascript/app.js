@@ -1,5 +1,5 @@
 
-//------------- variables,button generation,--------//
+//------------- Variables, Buttons,  Gifs-------------------------//
 
 
 const wrestlers = ["hulk hogan","andre the giant","mr perfect","the rock","roudy piper","vince mcmahon","jake the snake roberts","the ultimate warrior","the undertaker","shawn michaels" ]
@@ -40,7 +40,7 @@ renderGif();
         renderGif();
     });
 
-// ---------------------------fetch giphyapi----------------------------- //
+// ---------------------------fetch giphyapi for rending ratings and gifs----------------------------- //
 
 function renderGif() {
 
@@ -85,7 +85,8 @@ function renderGif() {
     });
 }
 
-// ---------------------------gif state section ----------------------------- //
+// ---------------------------gif state stuff not workng--------------------------//
+
 
 
 document.querySelectorAll(".gif").forEach(function (img) {
@@ -113,7 +114,9 @@ document.querySelectorAll(".gif").forEach(function (img) {
 });
 
 
-//-----------------------user add favorites-----------------------//
+//-----------------------user add favorites-------------------------------//
+
+
 
 
 //------------------------integrate omdb api------------------------------//

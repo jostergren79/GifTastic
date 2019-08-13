@@ -4,26 +4,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WrestlerGifTastic!</title>
-    <link rel="stylesheet" href="../GifTastic/assets/css/style.css">
+    <link rel="stylesheet" href="../Gif-Tastic/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="container">
+
     <h1>Wrestler Search</h1>
+  
+  <div class="row">
+    <div class="col">
+      <div id="wrestler-buttons"></div>
     
-        <div id="wrestler-buttons"></div>
-    
-        <form id="wrestler-form">Enter Your Favorite Wrestler
+        <form id="wrestler-form">Enter a Wrestler!
+
           <label for="wrestler-input"></label>
           <input type="text" id="wrestler-input"><br>
-    
           <input id="add-wrestler" type="submit" value="submit">
+
         </form>
 
         <div id="gifs-appear-here"></div>
-    
-      <script src="../GifTastic/assets/javascript/app.js"></script>
+      </div>
+
+    <div class="col">
+      <form id="wrestler-form">Save a Favorite!
+
+          <label for="wrestler-input"></label>
+          <input type="text" id="wrestler-input"><br>
+          <input id="add-wrestler" type="submit" value="submit">
+
+        <div id="user-favorites-here"></div>
+        
+    </div>
+  </div>  
+</div>
+
+      <script src="../Gif-Tastic/assets/javascript/app.js"></script>
 </body>
 
 </html>
