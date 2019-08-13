@@ -66,7 +66,34 @@ function renderGif() {
 
                 const personImage = document.createElement("img");
 
-                personImage.setAttribute("src", results[i].images.fixed_height.url);
+                personImage.setAttribute("src", results[i].images.original_still.url);
+                
+                personImage.setAttribute("data-still", results[i].images.original_still.url)
+
+                personImage.setAttribute("data-animate", results[i].images.original.url)
+
+                personImage.setAttribute("data-state", "still") 
+
+                personImage.addEventListener("click", function (event) {
+                
+                        console.log("you clicked")
+                
+                        let state = event.target.getAttribute("data-state");
+                    
+                        if (state === "still") {
+                
+                        event.target.setAttribute("src", event.target.getAttribute("data-animate"));
+                
+                        event.target.setAttribute("data-state", "animate");
+                
+                        } else {
+                
+                        event.target.setAttribute("src", event.target.getAttribute("data-still"));
+                
+                        event.target.setAttribute("data-state", "still");
+                
+                        }
+                    });
 
                 const rating = results[i].rating;
 
