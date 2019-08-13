@@ -51,10 +51,9 @@ function renderGif() {
             let wrestlerQuery = event.target.getAttribute("data-person");
 
             let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=0R2seTXc9SmksHcymZzrTgcyC2E9FL88&q="+ wrestlerQuery + "&limit=10&offset=0&rating=G&rating=PG&rating=PG-13&lang=en"
-            
         fetch(queryURL)
 
-            .then(function (response) {
+            .then(function (response) {console.log(response)
                 return response.json(); 
             })
             .then(function (responseJson) {
