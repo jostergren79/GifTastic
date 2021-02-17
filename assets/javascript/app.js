@@ -2,7 +2,7 @@
 //------------- Variables, Buttons,  Gifs-------------------------//
 
 
-const wrestlers = ["hulk hogan","andre the giant","mr perfect","the rock","roudy piper","vince mcmahon","jake the snake roberts","the ultimate warrior","the undertaker","shawn michaels" ]
+const wrestlers = []
 
 function renderButtons() {
 
